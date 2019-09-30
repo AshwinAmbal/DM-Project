@@ -3,7 +3,6 @@ import numpy as np
 
 def getDataFrame(fileName):
   df = pd.read_csv(fileName)
-
   columns = []
   for column in df.columns:
       columns.append(column.replace(' ', ''))
@@ -38,4 +37,5 @@ def getDataFrame(fileName):
 
   df = df.fillna(method='bfill', axis=1)
   df = df.fillna(method='ffill', axis=1)
+  df = df.dropna()
   return df
