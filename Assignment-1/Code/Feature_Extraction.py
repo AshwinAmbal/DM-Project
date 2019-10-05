@@ -9,6 +9,7 @@ fileNames = ["./../DataFolder/CGMSeriesLunchPat1.csv", "./../DataFolder/CGMSerie
                    "./../DataFolder/CGMSeriesLunchPat3.csv", "./../DataFolder/CGMSeriesLunchPat4.csv",
                    "./../DataFolder/CGMSeriesLunchPat5.csv"]
 
+
 def Feature_Extraction(df):
     feature_1_df = df.groupby(np.arange(len(df.columns))//6, axis=1).mean()
     
@@ -107,3 +108,5 @@ for fileName in fileNames:
     df = getDataFrame(fileName)
     returned_df = Feature_Extraction(df)
     final_df = pd.concat([final_df, returned_df], axis=0, ignore_index=True)
+
+final_df.to_csv("./../Extracted_Features.csv")

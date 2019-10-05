@@ -38,4 +38,5 @@ def getDataFrame(fileName):
   df = df.fillna(method='bfill', axis=1)
   df = df.fillna(method='ffill', axis=1)
   df = df.dropna()
+  df = df.reset_index(drop=True)
   return df
