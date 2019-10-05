@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 import sys
-sys.path.append("C:/MS/3rdsem/DM/Assignments/DM-Project/Assignment-1/Code")
+sys.path.append("F:\3RDSEM\DM\Assignment_1\DM-Project\Assignment-1\Code")
 
 from Utility import getDataFrame
 fileNames = ["./../DataFolder/CGMSeriesLunchPat1.csv", "./../DataFolder/CGMSeriesLunchPat2.csv",
@@ -113,9 +113,21 @@ def Feature_Extraction(df):
     feature_5_df = pd.DataFrame.from_dict(feature_5)
     feature_5_df.columns = ['CGM_Displacement_Interval_' + str(i) for i in range(1, len(segments))]
 
-    # ==================================================================
+    #==================================================================
+    segments = [(i) * 6 for i in range(len(df.columns) // 6 + 1)]
+    feature_6 = {}
+    for i in range(len(segments) - 1):
+        df1 = df.iloc[:, segments[i]:segments[i + 1]]
+        diff1 = df1[df1.columns[::-1]].diff(axis=1)
+        if 'cgmSeries_30' in diff1.columns:
+            diff1['cgmSeries_30'].fillna(0, inplace=True)
+        mean1 = diff1.mean(axis=1)
+        feature_6[i] = mean1
 
-    final_df = pd.concat([df, feature_1_df, feature_2_df, feature_3_df, feature_4_df, feature_5_df], axis=1)
+    feature_6_df = pd.DataFrame.from_dict(feature_6)
+    feature_6_df.columns = ['CGM_Velocity_Interval_' + str(i) for i in range(1, len(segments))]
+    #==================================================================
+    final_df = pd.concat([df, feature_1_df, feature_2_df, feature_3_df, feature_4_df, feature_5_df, feature_6_df], axis=1)
     return final_df
 
 final_df = pd.DataFrame()
