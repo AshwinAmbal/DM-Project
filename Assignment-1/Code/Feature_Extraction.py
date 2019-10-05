@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 
-import sys
-sys.path.append("F:\3RDSEM\DM\Assignment_1\DM-Project\Assignment-1\Code")
+#import sys
+#sys.path.append("F:\3RDSEM\DM\Assignment_1\DM-Project\Assignment-1\Code")
 
 from Utility import getDataFrame
 fileNames = ["./../DataFolder/CGMSeriesLunchPat1.csv", "./../DataFolder/CGMSeriesLunchPat2.csv",
@@ -24,8 +24,11 @@ def Feature_Extraction(df):
     for i in range(0,len(df.index)):
         indices = []
         for j in range(0, len(df.columns)-1): 
-            if(df.iloc[i][df.columns[j]] >= df.iloc[i][df.columns[j-1]] and 
-               df.iloc[i][df.columns[j]] > df.iloc[i][df.columns[j+1]]):
+            if((df.iloc[i][df.columns[j]] >= df.iloc[i][df.columns[j-1]] and 
+               df.iloc[i][df.columns[j]] > df.iloc[i][df.columns[j+1]]) or
+               (df.iloc[i][df.columns[j]] > df.iloc[i][df.columns[j-1]] and 
+               df.iloc[i][df.columns[j]] >= df.iloc[i][df.columns[j+1]]) 
+               ):
                 indices.append(j)
         local_maxima.append(indices)
     
@@ -33,8 +36,10 @@ def Feature_Extraction(df):
     for i in range(0,len(df.index)):
         indices = []
         for j in range(0, len(df.columns)-1): 
-            if(df.iloc[i][df.columns[j]] <= df.iloc[i][df.columns[j-1]] and 
-               df.iloc[i][df.columns[j]] < df.iloc[i][df.columns[j+1]]):
+            if((df.iloc[i][df.columns[j]] <= df.iloc[i][df.columns[j-1]] and 
+               df.iloc[i][df.columns[j]] < df.iloc[i][df.columns[j+1]]) or
+               (df.iloc[i][df.columns[j]] < df.iloc[i][df.columns[j-1]] and 
+               df.iloc[i][df.columns[j]] <= df.iloc[i][df.columns[j+1]])):
                 indices.append(j)
         local_minima.append(indices)
     
