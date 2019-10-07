@@ -9,7 +9,7 @@ extracted_feature = pd.read_csv("/Users/avinash/Code/DM-Project/Assignment-1/Ext
 for i in range(31):
   extracted_feature = extracted_feature.drop(extracted_feature.columns[0], axis=1)
 
-features = extracted_feature.fillna(0).values
+features = extracted_feature.fillna(0)
 print(features.shape)
 # Normalizing the features value to fit the PCA
 features = StandardScaler().fit_transform(features)
@@ -21,6 +21,10 @@ principal_components = pca.fit_transform(features)
 
 columns = ['principal_components_'+str(i+1) for i in range(5)]
 
-final_pca = pd.DataFrame(data=principal_components, columns=columns)
+final_pca = pd.DataFrame(pca.components_,columns=extracted_feature.columns,index = ['PC-1','PC-2', 'PC-3', 'PC-4', 'PC-5'])
 
-final_pca.to_csv('./../principal_components_features.csv')
+print(final_pca)
+
+# final_pca = pd.DataFrame(data=principal_components, columns=columns)
+
+final_pca.to_csv('./../pc_matrix.csv')
