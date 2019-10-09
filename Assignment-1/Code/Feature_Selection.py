@@ -1,18 +1,19 @@
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.decomposition import PCA
 
 # extracted_feature = pd.read_csv("./../Extracted_Features.csv")
 extracted_feature = pd.read_csv("/Users/avinash/Code/DM-Project/Assignment-1/Extracted_Features.csv")
 # extracted_feature.fillna(0)
 
-for i in range(31):
+for i in range(36):
   extracted_feature = extracted_feature.drop(extracted_feature.columns[0], axis=1)
 
+# print(extracted_feature.columns)
 features = extracted_feature.fillna(0)
 print(features.shape)
 # Normalizing the features value to fit the PCA
-features = StandardScaler().fit_transform(features)
+features = MinMaxScaler().fit_transform(features)
 
 
 pca = PCA(n_components=5)
@@ -23,7 +24,7 @@ columns = ['principal_components_'+str(i+1) for i in range(5)]
 
 final_pca = pd.DataFrame(pca.components_,columns=extracted_feature.columns,index = ['PC-1','PC-2', 'PC-3', 'PC-4', 'PC-5'])
 
-print(final_pca)
+print(final_pca.abs().sum().nlargest(38))
 
 # final_pca = pd.DataFrame(data=principal_components, columns=columns)
 
