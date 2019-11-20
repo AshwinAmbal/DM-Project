@@ -11,8 +11,6 @@ def getDataFrame(fileName):
 
   df = df[['cgmSeries_' + str(i) for i in range(1, 31)]].copy()
 
-  temp = df.copy()
-
   for i in range(1, 31):
       if i == len(df.columns):
           df['cgmSeries_' + str(i)] = df.apply(
