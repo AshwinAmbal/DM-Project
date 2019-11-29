@@ -1,14 +1,13 @@
-# DM-Project
-Data Mining CGM Data Processing
-Data Mining Assignment 3
+# Data Mining Assignment 3
+
 This assignment is to cluster the time series based glucose level data. KMeans algorithm is chosen for clustering and the value of K is set as 10. SSE is calculated in the form of inertia or within-cluster sum-of-squares calculation.
 
-Testing the assignment
-Place the test file in the Dataset > RawTestData Folder
-As the model already trained and stored as the pickle file, Please navigate inside the Code folder and run the Predict.py
+## Testing the assignment
+1. Place the test file in the Dataset > RawTestData Folder
+2. As the model already trained and stored as the pickle file, Please navigate inside the Code folder and run the Predict.py
    > cd Code
    > python3 Predict.py
-Once the Predict.py runs successfully, Please navigate to the result folder in the same directory (Code) to view the result of clustering.
+3. Once the Predict.py runs successfully, Please navigate to the result folder in the same directory (Code) to view the result of clustering.
 +-- Dataset
 |   +-- RawTestData
 |   |  +-- Place your test file
