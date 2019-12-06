@@ -60,6 +60,8 @@ def CleanData(data, test=False):
                 if np.isnan(row['cgmSeries_' + str(i)]) else row['cgmSeries_' + str(i)],
                 axis=1
             )
+            if(test):
+                break
         elif i == 1:
             df['cgmSeries_' + str(i)] = df.apply(
                 lambda row: (row['cgmSeries_' + str(i + 1)]) if np.isnan(row['cgmSeries_' + str(i)]) else row['cgmSeries_' + str(i)],
@@ -76,7 +78,10 @@ def CleanData(data, test=False):
                 )
     df.iloc[:, 0:30] = df.iloc[:, 0:30].fillna(method='bfill', axis=1)
     df.iloc[:, 0:30] = df.iloc[:, 0:30].fillna(method='ffill', axis=1)
-    df = df.dropna()
+    if(not test):
+        df = df.dropna()
+    else:
+        df = df.fillna(0)
     df = df.reset_index(drop=True)
     return df
 

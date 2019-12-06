@@ -52,7 +52,7 @@ if __name__ == '__main__':
   X = df.iloc[:, :-1].values
 
   #pca, X_train_df, minmax = PCA_Reduction.PCAReduction(pd.DataFrame(X), 2, 'tsne')
-  pca, X_train_df, minmax = PCA_Reduction.PCAReduction(pd.DataFrame(X), 2)
+  pca, X_train_df, minmax = PCA_Reduction.PCAReduction(pd.DataFrame(X), 0.95)
   X = X_train_df.values
   for cname in ['KMeans',]:
       cluster(X, cname, 10)
