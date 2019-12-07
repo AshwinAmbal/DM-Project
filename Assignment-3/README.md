@@ -1,9 +1,9 @@
 # Team Members
 
-Avinash Sivaraman (1215054529 - asivara6@asu.edu)
-Kaviya Kalaichelvan(121512889 - kkalaich@asu.edu)
-Ashwin Karthik Ambalavanan (1215105307 - aambalav@asu.edu)
-Aishwarya Sankararaman(125102941- asanka17@asu.edu)
+ - Avinash Sivaraman (1215054529 - asivara6@asu.edu)
+ - Kaviya Kalaichelvan(121512889 - kkalaich@asu.edu)
+ - Ashwin Karthik Ambalavanan (1215105307 - aambalav@asu.edu)
+ - Aishwarya Sankararaman(125102941- asanka17@asu.edu)
 
 # Data Mining Assignment 3
 
