@@ -1,3 +1,10 @@
+# Team Members
+
+Avinash Sivaraman (1215054529 - asivara6@asu.edu)
+Kaviya Kalaichelvan(121512889 - kkalaich@asu.edu)
+Ashwin Karthik Ambalavanan (1215105307 - aambalav@asu.edu)
+Aishwarya Sankararaman(125102941- asanka17@asu.edu)
+
 # Data Mining Assignment 3
 
 This assignment is to cluster the time series based glucose level data. KMeans algorithm is chosen for clustering and the value of K is set as 10. SSE is calculated in the form of inertia or within-cluster sum-of-squares calculation. Clustering is also performed using DBSCAN algorithm with the epsilon value set to 0.1 and minimum number of samples set to 1. Also the meal amount data for five patients is put into buckets based on ranges to map the buckets and cluster assignments obtained from each of the clustering algorithm and compare with the results.
