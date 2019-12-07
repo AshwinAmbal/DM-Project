@@ -21,7 +21,7 @@ def getCluster(cname, n_clusters=10):
   if cname == 'KMeans':
     return KMeans(n_clusters=n_clusters, random_state=42), n_clusters
   elif cname == 'DBScan':
-      return DBSCAN(eps = 0.1, min_samples = 1), n_clusters
+    return DBSCAN(eps = 0.1, min_samples = 1), n_clusters
 
 def cluster(X, cname, k):
     clf, n_clusters = getCluster(cname, k)
