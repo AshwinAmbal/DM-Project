@@ -1,6 +1,6 @@
 # Data Mining Assignment 3
 
-This assignment is to cluster the time series based glucose level data. KMeans algorithm is chosen for clustering and the value of K is set as 10. SSE is calculated in the form of inertia or within-cluster sum-of-squares calculation.
+This assignment is to cluster the time series based glucose level data. KMeans algorithm is chosen for clustering and the value of K is set as 10. SSE is calculated in the form of inertia or within-cluster sum-of-squares calculation. Clustering is also performed using DBSCAN algorithm with the epsilon value set to 0.1 and minimum number of samples set to 1. Also the meal amount data for five patients is put into buckets based on ranges to map the buckets and cluster assignments obtained from each of the clustering algorithm and compare with the results.
 
 ## Testing the assignment
 
@@ -43,8 +43,8 @@ This assignment is to cluster the time series based glucose level data. KMeans a
                    testing.
 
 `Train.py` -  It trains the data with the Kmeans clustering and saves the trained cluster assignments
-            as a pickle file in the Model directory.
+            as a pickle file in the Model directory. 
 
-`Predict.py` -  It contains the function call to run the Kmeans clustering.
+`Predict.py` -  It contains the function call to run the Kmeans and DBSCAN clustering. It also holds the bucketing algorithm for the carbs data which can be used for comparison.
               
 
