@@ -31,7 +31,7 @@ def cluster(X, cname, k):
     if cname == 'KMeans':
         sse = clf.inertia_
     else:
-        sse = 22.02
+        sse=None
 
     #_, X_dim_2, _ = PCA_Reduction.PCAReduction(pd.DataFrame(X), 2)
     #X_dim_2 = X_dim_2.values
@@ -51,7 +51,8 @@ def cluster(X, cname, k):
                 ms=8, label=name, color=color)
     ax.legend()
     plt.show()
-    print("Sum of Squared Error with n_clusters= {} is: {}".format(n_clusters, sse))
+    if cname == 'KMeans':
+        print("Sum of Squared Error with n_clusters= {} is: {}".format(n_clusters, sse))
     saveModel(clf, cname)
   
 
