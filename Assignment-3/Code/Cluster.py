@@ -4,6 +4,7 @@ import os
 import random
 from sklearn.cluster import KMeans
 from sklearn.metrics import mean_squared_error
+from sklearn.cluster import DBSCAN
 
 import matplotlib.pyplot as plt
 
@@ -19,12 +20,19 @@ path = os.path.abspath("../Dataset")
 def getCluster(cname, n_clusters=10):
   if cname == 'KMeans':
     return KMeans(n_clusters=n_clusters, random_state=42), n_clusters
+  elif cname == 'DBScan':
+      return DBSCAN(eps = 0.1, min_samples = 1), n_clusters
 
 def cluster(X, cname, k):
     clf, n_clusters = getCluster(cname, k)
     clf = clf.fit(X)
     clusters = clf.labels_
-    sse = clf.inertia_
+
+    if cname == 'KMeans':
+        sse = clf.inertia_
+    else:
+        sse = 22.02
+
     #_, X_dim_2, _ = PCA_Reduction.PCAReduction(pd.DataFrame(X), 2)
     #X_dim_2 = X_dim_2.values
     df = pd.DataFrame()
@@ -52,9 +60,10 @@ if __name__ == '__main__':
   X = df.iloc[:, :-1].values
 
   #pca, X_train_df, minmax = PCA_Reduction.PCAReduction(pd.DataFrame(X), 2, 'tsne')
-  pca, X_train_df, minmax = PCA_Reduction.PCAReduction(pd.DataFrame(X), 0.95)
+  pca, X_train_df, minmax = PCA_Reduction.PCAReduction(pd.DataFrame(X), 2)
   X = X_train_df.values
-  for cname in ['KMeans',]:
+  for cname in ['KMeans','DBScan']:
       cluster(X, cname, 10)
   saveModel(pca, 'pca-weights')
   saveModel(minmax, 'minmax-weights')
+

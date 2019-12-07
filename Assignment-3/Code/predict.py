@@ -76,13 +76,17 @@ if __name__ == "__main__":
     X_test = df.values
     X_test = minmax.transform(pd.DataFrame(X_test))
     X_test = pca.transform(pd.DataFrame(X_test))
-    for cname in ['KMeans',]:
-      print('Predicting the cluster assignment using' +cname)
+    for cname in ['KMeans','DBScan']:
+      print('Predicting the cluster assignment using ' +cname)
       clf = loadModel(cname)
-      yhat = clf.predict(X_test)
+
+      if cname == 'KMeans':
+        yhat = clf.predict(X_test)
+      else:
+        yhat = clf.fit_predict(X_test)
 
       yhat = yhat.reshape(len(yhat), 1)
-      pd.DataFrame(yhat).to_csv("result/"+cname+"-result.csv")
+      pd.DataFrame(yhat).to_csv("result/"+cname+"-result.csv", index = False)
       print('Stored the result for '+cname+' clustering in the result folder')
       print()
       
