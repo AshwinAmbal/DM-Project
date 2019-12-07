@@ -49,7 +49,7 @@ This assignment is to cluster the time series based glucose level data. KMeans a
 `ModelUtility.py` -  It saves the Model as the pickle file and it loads it up while
                    testing.
 
-`Train.py` -  It trains the data with the Kmeans clustering and saves the trained cluster assignments
+`Cluster.py` -  It fits the data with the Kmeans clustering and saves the trained cluster assignments
             as a pickle file in the Model directory. 
 
 `Predict.py` -  It contains the function call to run the Kmeans and DBSCAN clustering. It also holds the bucketing algorithm for the carbs data which can be used for comparison.
